@@ -513,6 +513,10 @@ namespace NzbDrone.Common.Disk
             }
             finally
             {
+                if (_diskProvider.FileExists(tempTargetPath))
+                {
+                    _diskProvider.DeleteFile(tempTargetPath);
+                }
                 if (_diskProvider.FileExists(backupPath))
                 {
                     _diskProvider.DeleteFile(backupPath);
